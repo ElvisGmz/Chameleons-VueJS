@@ -1,6 +1,8 @@
 # Chameleons for Vue.JS
 
-Create a beautiful cut effect to your fixed element and change its color with cut effect when scrolling.
+Create a beautiful cut effect to your fixed element and change its color with cut effect when scrolling. Zero dependecy.
+
+![https://res.cloudinary.com/superfolio/image/upload/v1620078437/ezgif.com-gif-maker_lumagl.gif](https://res.cloudinary.com/superfolio/image/upload/v1620078437/ezgif.com-gif-maker_lumagl.gif)
 
 # Install
 
@@ -10,15 +12,23 @@ npm install chameleons-vue
 
 # Usage
 
+### Required Attributes
+
 - Apply the attribute `chameleons` to parent element for your fixed element, for apply the effect.
+- `chameleons-tag` for activate your section element
+
+### Option Atributtes
+
 - Use `chameleons-apply="your_class"` to apply these styles to your fixed element when the element with this attribute passes below in the scroll
+- `chameleons-data='{"fixedName":"your_class"}'` for add class to a specific fixed element.
+- The attribute `chameleons-name="fixedName"` is use for add one name for your parent of the Fixed Element and you can use the next atributte for apply class.
 
 ### NavBar.vue
 
 ```html
 <template>
 	<!-- Parent of the fixed element -->
-	<header chameleons>
+	<header chameleons chameleons-name="MyFixedNav">
 		<nav class="fixed">
 			<!-- Your elements or content here -->
 		</nav>
@@ -34,10 +44,10 @@ npm install chameleons-vue
 	<NavigationBar />
 
 	<!-- Your Content Sections -->
-	<section chameleons-apply="your_class">
+	<section chameleons-tag chameleons-apply="your_class">
 		<!-- Your Content Here -->
 	</section>
-	<section chameleons-apply="your_other_class">
+	<section chameleons-tag chameleons-data='{"MyFixedNav":"your_class"}'>
 		<!-- Your Content Here -->
 	</section>
 </template>
@@ -70,7 +80,7 @@ npm install chameleons-vue
 </style>
 ```
 
-> If for some reason you have problems applying `z-index` use the CSS class `non-index`. Chameleons require as params `Vue` and `VueComponent` for work.
+> If for some reason you have problems applying `z-index` use the CSS class `non-index` or `chameleons-visible` for fix default `overflow-hidden` in your section. Chameleons require as params `Vue` and `VueComponent` for work.
 
 # Reactivity
 

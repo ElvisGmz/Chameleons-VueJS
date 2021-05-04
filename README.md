@@ -14,20 +14,20 @@ npm install chameleons-vue
 
 ### Required Attributes
 
-- Apply the attribute `chameleons` to parent element for your fixed element, for apply the effect.
-- `chameleons-tag` for activate your section element
+- Apply the attribute `chameleons` to the parent element of your fixed element, to apply the effect.
+- Add `chameleons-tag` to activate your section element
 
 ### Option Atributtes
 
-- Use `chameleons-apply="your_class"` to apply these styles to your fixed element when the element with this attribute passes below in the scroll
-- `chameleons-data='{"fixedName":"your_class"}'` for add class to a specific fixed element.
-- The attribute `chameleons-name="fixedName"` is use for add one name for your parent of the Fixed Element and you can use the next atributte for apply class.
+- Use `chameleons-apply="your_class"` to apply these styles to your fixed element when this element passes below in the scroll
+- Use `chameleons-data='{"fixedName":"your_class"}'` to add a class to a specific fixed element.
+- The attribute `chameleons-name="fixedName"` is used for adding a name to your fixed element's parent, so you can use the next atributte for applying a class.
 
 ### NavBar.vue
 
 ```html
 <template>
-	<!-- Parent of the fixed element -->
+	<!--The parent of the fixed element -->
 	<header chameleons chameleons-name="MyFixedNav">
 		<nav class="fixed">
 			<!-- Your elements or content here -->
@@ -80,7 +80,8 @@ npm install chameleons-vue
 </style>
 ```
 
-> If for some reason you have problems applying `z-index` use the CSS class `non-index` or `chameleons-visible` for fix default `overflow-hidden` in your section. Chameleons require as params `Vue` and `VueComponent` for work.
+> If for some reason you have problems applying `z-index` use the CSS class `non-index` or `chameleons-visible` to fix default `overflow-hidden` in your section. 
+>Chameleons require `Vue` and `VueComponent` as params to work.
 
 # Reactivity
 
@@ -88,7 +89,7 @@ npm install chameleons-vue
 
 # How to use with TailwindCSS
 
-You can do it using apply inside the class you apply in `chameleons-apply="your_class"`
+You can do it by adding '@apply' inside the class you set using `chameleons-apply="your_class"`
 
 ### CSS File:
 

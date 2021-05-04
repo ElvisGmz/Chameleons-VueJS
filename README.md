@@ -89,7 +89,7 @@ npm install chameleons-vue
 
 # How to use with TailwindCSS
 
-You can do it by using '@apply' inside the class you set in `chameleons-apply="your_class"`
+You can do it by adding '@apply' inside the class you set using `chameleons-apply="your_class"`
 
 ### CSS File:
 

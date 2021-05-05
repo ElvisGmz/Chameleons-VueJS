@@ -2,7 +2,7 @@
 
 Create a beautiful cut effect to your fixed element and change its color with cut effect when scrolling. Zero dependecy.
 
-![https://res.cloudinary.com/superfolio/image/upload/v1620078437/ezgif.com-gif-maker_lumagl.gif](https://res.cloudinary.com/superfolio/image/upload/v1620078437/ezgif.com-gif-maker_lumagl.gif)
+![](https://res.cloudinary.com/superfolio/image/upload/v1620078437/ezgif.com-gif-maker_lumagl.gif)
 
 # Install
 
@@ -27,12 +27,12 @@ npm install chameleons-vue
 
 ```html
 <template>
-	<!--The parent of the fixed element -->
-	<header chameleons chameleons-name="MyFixedNav">
-		<nav class="fixed">
-			<!-- Your elements or content here -->
-		</nav>
-	</header>
+  <!--The parent of the fixed element -->
+  <header chameleons chameleons-name="MyFixedNav">
+    <nav class="fixed">
+	  <!-- Your elements or content here -->
+	</nav>
+  </header>
 </template>
 ```
 
@@ -40,42 +40,42 @@ npm install chameleons-vue
 
 ```html
 <template>
-	<!-- Vue Component - Fixed Element -->
-	<NavigationBar />
+  <!-- Vue Component - Fixed Element -->
+  <NavigationBar />
 
-	<!-- Your Content Sections -->
-	<section chameleons-tag chameleons-apply="your_class">
-		<!-- Your Content Here -->
-	</section>
-	<section chameleons-tag chameleons-data='{"MyFixedNav":"your_class"}'>
-		<!-- Your Content Here -->
-	</section>
+  <!-- Your Content Sections -->
+  <section chameleons-tag chameleons-apply="your_class">
+    <!-- Your Content Here -->
+  </section>
+  <section chameleons-tag chameleons-data='{"MyFixedNav":"your_class"}'>
+    <!-- Your Content Here -->
+  </section>
 </template>
 
 <script>
-	import Vue from "vue";
-	import Chameleons from "chameleons-vue";
-	import NavigationBar from "./components/NavigationBar";
-	export default {
-		name: "MyComponent",
-		components: {
-			NavigationBar,
-		},
-		updated(){
-			Chameleons(Vue, NavigationBar);
-		},
-	}
+  import Vue from "vue";
+  import Chameleons from "chameleons-vue";
+  import NavigationBar from "./components/NavigationBar";
+  export default {
+    name: "MyComponent",
+	components: {
+	  NavigationBar,
+	},
+	updated(){
+	  Chameleons(Vue, NavigationBar);
+	},
+  }
 </script>
 
 <style>
 .your_class{
-	background-color: #21212C;
-	color: white;
+  background-color: #21212C;
+  color: white;
 }
 
 .your_other_class{
-	background-color: white;
-	color: #21212C;
+  background-color: white;
+  color: #21212C;
 }
 </style>
 ```
@@ -95,15 +95,15 @@ You can do it by adding '@apply' inside the class you set using `chameleons-appl
 
 ```css
 .your_class{
-	@apply bg-dark-700 rounded; 
+  @apply bg-dark-700 rounded; 
 }
 
 .your_class h1{
-	@apply text-xl font-bold; 
+  @apply text-xl font-bold; 
 }
 
 .your_class p{
-	@apply text-justify;
+  @apply text-justify;
 }
 ```
 
@@ -111,19 +111,19 @@ You can do it by adding '@apply' inside the class you set using `chameleons-appl
 
 ```html
 <template>
-	<!-- Your fixed parent -->
-	<header chameleons>
-		<nav class="fixed">
-			<!-- Your elements or content here -->
-		</nav>
-	</header>
+  <!-- Your fixed parent -->
+  <header chameleons>
+    <nav class="fixed">
+	  <!-- Your elements or content here -->
+	</nav>
+  </header>
 
-	<!-- Your Content Sections -->
-	<section chameleons-apply="your_class_with_tailwind">
-		<!-- Your Content Here -->
-	</section>
-	<section chameleons-apply="your_class_with_tailwind">
-		<!-- Your Content Here -->
-	</section>
+  <!-- Your Content Sections -->
+  <section chameleons-apply="your_class_with_tailwind">
+    <!-- Your Content Here -->
+  </section>
+  <section chameleons-apply="your_class_with_tailwind">
+    <!-- Your Content Here -->
+  </section>
 </template>
 ```

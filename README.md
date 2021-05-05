@@ -30,8 +30,8 @@ npm install chameleons-vue
   <!--The parent of the fixed element -->
   <header chameleons chameleons-name="MyFixedNav">
     <nav class="fixed">
-	  <!-- Your elements or content here -->
-	</nav>
+	    <!-- Your elements or content here -->
+	  </nav>
   </header>
 </template>
 ```
@@ -114,8 +114,8 @@ You can do it by adding '@apply' inside the class you set using `chameleons-appl
   <!-- Your fixed parent -->
   <header chameleons>
     <nav class="fixed">
-	  <!-- Your elements or content here -->
-	</nav>
+	    <!-- Your elements or content here -->
+	  </nav>
   </header>
 
   <!-- Your Content Sections -->

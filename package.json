@@ -1,6 +1,6 @@
 {
   "name": "chameleons-vue",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Create a beautiful cut effect to your fixed element and change its color with cut effect when scrolling",
   "main": "index.js",
   "scripts": {

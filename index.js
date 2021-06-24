@@ -1,1 +1,155 @@
-export default function Chameleons(e,n){let t=document.head||document.getElementsByTagName("head").firstChild,l=document.createElement("style");t.appendChild(l),document.querySelectorAll("[chameleons-tag]").forEach(t=>{let l,o=document.querySelectorAll("[chameleons-name]"),i=t.getAttribute("chameleons-apply"),a=t.getAttribute("chameleons-data");if(null!==a){let e=JSON.parse(`${a}`);l=e}else l=i;let d=typeof l,s=t.getAttribute("class"),h=new(e.extend(n))({});if(h.$mount(),0==t.querySelectorAll("[chameleons]").length){t.className="";let e=document.createElement("div");t.prepend(h.$el);let n=t.querySelector("[chameleons]"),i=t.childNodes;o.length>0&&"object"==d?Object.keys(l).forEach(e=>{o.forEach(t=>{let o=t.getAttribute("chameleons-name");e==o&&n.getAttribute("chameleons-name")==o&&(n.firstChild.nodeType==Node.TEXT_NODE?n.childNodes[1].className+=` ${l[e]}`:n.firstChild.className+=` ${l[e]}`)})}):n.firstChild.nodeType==Node.TEXT_NODE?n.childNodes[1].className+=` ${l}`:n.firstChild.className+=` ${l}`,n.appendChild(e),e.className+=null==s?"chameleons-hidden":`${s} chameleons-hidden`,i.forEach((n,l)=>{if(l>0&&i[l].nodeType!=Node.TEXT_NODE){let l=t.removeChild(n);e.appendChild(l)}})}});let o="\n          *, *::before, *::after {\n            box-sizing: border-box;\n          }\n\n          *[chameleons-tag] {\n            width: 100%;\n            position: relative;\n            padding: 0;\n          }\n          \n          *[chameleons-tag]:first-child{\n            max-heigth: 0;\n            overflow: hidden;\n          }\n\n          *[chameleons] {\n            min-height: 100%;\n            width: 100%;\n            position: relative;\n            box-sizing: border-box;\n            top: 0;\n            bottom: 0;\n            z-index: 0;\n            clip: rect(1px, auto, auto, 1px); /* IE8+ & other browsers */\n          }\n\n          *[chameleons] > * {\n            width: 100%;\n            z-index: 0;\n            position: relative;\n          }\n\n          *[chameleons] > *:first-child {\n            width: 100%;\n            z-index: 10000;\n            position: fixed;\n          }\n\n          *[chameleons-tag] > :not(*[chameleons], #menubg, #menu, .non-index){\n            position: relative;\n            z-index: 0;\n          }\n\n          .chameleons-hidden{\n            overflow: hidden;\n          }\n\n          *.chameleons-visible{\n            overflow: visible !important;\n          }\n\n          @media screen and (-webkit-min-device-pixel-ratio:0) { \n            *[chameleons] {\n              clip: auto;\n              -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%)\n            }\n          }\n          ";l.styleSheet?l.styleSheet.ChamaleonsStylesText=o:l.appendChild(document.createTextNode(o))}
+export default function Chameleons(Vue, VueElement) {
+  let siteHead =
+      document.head || document.getElementsByTagName("head").firstChild,
+    stylesElement = document.createElement("style");
+
+  siteHead.appendChild(stylesElement),
+    document
+      .querySelectorAll("[chameleons-tag]")
+      .forEach((chameleonElement) => {
+        let chameleonClassesInyect,
+          chameleonNamed = document.querySelectorAll("[chameleons-name]"),
+          chameleonClasses = chameleonElement.getAttribute("chameleons-apply"),
+          chameleonsIgnoreClasses =
+            chameleonElement.getAttribute("chameleons-ignore"),
+          chameleonsData = chameleonElement.getAttribute("chameleons-data");
+
+        if (chameleonsData !== null) {
+          let chameleonParseData = JSON.parse(`${chameleonsData}`);
+          chameleonClassesInyect = chameleonParseData;
+        } else {
+          chameleonClassesInyect = chameleonClasses;
+        }
+
+        let typeOfChameleonsClassesInyect = typeof chameleonClassesInyect,
+          originalClasses = chameleonElement.getAttribute("class"),
+          VueCloneElement = new (Vue.extend(VueElement))({});
+
+        if (
+          (VueCloneElement.$mount(),
+          chameleonElement.querySelectorAll("[chameleons]").length == 0)
+        ) {
+          chameleonElement.className = "";
+
+          let artificialContainer = document.createElement("div");
+
+          chameleonElement.prepend(VueCloneElement.$el);
+
+          let fixedParentElement =
+              chameleonElement.querySelector("[chameleons]"),
+            chameleonElementChild = chameleonElement.childNodes;
+
+          chameleonNamed.length > 0 && typeOfChameleonsClassesInyect == "object"
+            ? Object.keys(chameleonClassesInyect).forEach((Key) => {
+                chameleonNamed.forEach((namedElement) => {
+                  let nameOfElement =
+                    namedElement.getAttribute("chameleons-name");
+                  Key == nameOfElement &&
+                    fixedParentElement.getAttribute("chameleons-name") ==
+                      nameOfElement &&
+                    (fixedParentElement.firstChild.nodeType == Node.TEXT_NODE
+                      ? (fixedParentElement.childNodes[1].className += ` ${chameleonClassesInyect[Key]}`)
+                      : (fixedParentElement.firstChild.className += ` ${chameleonClassesInyect[Key]}`));
+                });
+              })
+            : fixedParentElement.firstChild.nodeType == Node.TEXT_NODE
+            ? (fixedParentElement.childNodes[1].className += ` ${chameleonClassesInyect}`)
+            : (fixedParentElement.firstChild.className += ` ${chameleonClassesInyect}`),
+            fixedParentElement.appendChild(artificialContainer),
+            (artificialContainer.className +=
+              null == originalClasses
+                ? "chameleons-hidden"
+                : `${originalClasses} chameleons-hidden`),
+            chameleonElementChild.forEach((n, l) => {
+              if (
+                l > 0 &&
+                chameleonElementChild[l].nodeType != Node.TEXT_NODE
+              ) {
+                let l = chameleonElement.removeChild(n);
+                artificialContainer.appendChild(l);
+              }
+            });
+
+          if (chameleonsIgnoreClasses !== null) {
+            chameleonElement.classList = chameleonsIgnoreClasses;
+          }
+        }
+      });
+
+  const stylesPureCSS = `
+          *,
+          *::before,
+          *::after {
+              box-sizing: border-box;
+              
+          }
+  
+          *[chameleons-tag] {
+              width: 100%;
+              position: relative;
+              padding: 0;
+              
+          }
+  
+          *[chameleons-tag]:first-child {
+              max-heigth: 0;
+              overflow: hidden;
+              
+          }
+  
+          *[chameleons] {
+              min-height: 100%;
+              width: 100%;
+              position: relative;
+              box-sizing: border-box;
+              top: 0;
+              bottom: 0;
+              z-index: 0;
+              clip: rect(1px, auto, auto, 1px);
+              /* IE8+ & other browsers */
+              
+          }
+  
+          *[chameleons]>* {
+              width: 100%;
+              z-index: 0;
+              position: relative;
+              
+          }
+  
+          *[chameleons]>*:first-child {
+              width: 100%;
+              z-index: 10000;
+              position: fixed;
+              
+          }
+  
+          *[chameleons-tag]> :not(*[chameleons], #menubg, #menu, .non-index) {
+              position: relative;
+              z-index: 0;
+              
+          }
+  
+          .chameleons-hidden {
+              overflow: hidden;
+              
+          }
+  
+          *.chameleons-visible {
+              overflow: visible !important;
+              
+          }
+  
+          @media screen and (-webkit-min-device-pixel-ratio:0) {
+              *[chameleons] {
+                  clip: auto;
+                  -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 100%)
+              }
+              
+          }
+      `;
+
+  stylesElement.styleSheet
+    ? (stylesElement.styleSheet.ChamaleonsStylesText = stylesPureCSS)
+    : stylesElement.appendChild(document.createTextNode(stylesPureCSS));
+}

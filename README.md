@@ -22,6 +22,7 @@ npm install chameleons-vue
 - Use `chameleons-apply="your_class"` to apply these styles to your fixed element when this element passes below in the scroll
 - Use `chameleons-data='{"fixedName":"your_class"}'` to add a class to a specific fixed element.
 - The attribute `chameleons-name="fixedName"` is used for adding a name to your fixed element's parent, so you can use the next atributte for applying a class.
+- If you want to keep a class in the container where you applied chameleons just put your CSS class in the attribute ```chameleons-ignore ="myClass otherClass"```
 
 ### NavBar.vue
 

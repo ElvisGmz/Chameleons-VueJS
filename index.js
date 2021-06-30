@@ -23,11 +23,14 @@ export default function Chameleons(Vue, VueElement) {
 
         let typeOfChameleonsClassesInyect = typeof chameleonClassesInyect,
           originalClasses = chameleonElement.getAttribute("class"),
-          VueCloneElement = new (Vue.extend(VueElement))({});
+          VueCloneElement = new (Vue.extend(VueElement))({}),
+          chameleonsControlHidden =
+            getComputedStyle(chameleonElement).display !== "none";
 
         if (
           (VueCloneElement.$mount(),
-          chameleonElement.querySelectorAll("[chameleons]").length == 0)
+          chameleonElement.querySelectorAll("[chameleons]").length == 0 &&
+            chameleonsControlHidden)
         ) {
           chameleonElement.className = "";
 
@@ -77,77 +80,77 @@ export default function Chameleons(Vue, VueElement) {
       });
 
   const stylesPureCSS = `
-          *,
-          *::before,
-          *::after {
-              box-sizing: border-box;
-              
-          }
-  
-          *[chameleons-tag] {
-              width: 100%;
-              position: relative;
-              padding: 0;
-              
-          }
-  
-          *[chameleons-tag]:first-child {
-              max-heigth: 0;
-              overflow: hidden;
-              
-          }
-  
-          *[chameleons] {
-              min-height: 100%;
-              width: 100%;
-              position: relative;
-              box-sizing: border-box;
-              top: 0;
-              bottom: 0;
-              z-index: 0;
-              clip: rect(1px, auto, auto, 1px);
-              /* IE8+ & other browsers */
-              
-          }
-  
-          *[chameleons]>* {
-              width: 100%;
-              z-index: 0;
-              position: relative;
-              
-          }
-  
-          *[chameleons]>*:first-child {
-              width: 100%;
-              z-index: 10000;
-              position: fixed;
-              
-          }
-  
-          *[chameleons-tag]> :not(*[chameleons], #menubg, #menu, .non-index) {
-              position: relative;
-              z-index: 0;
-              
-          }
-  
-          .chameleons-hidden {
-              overflow: hidden;
-              
-          }
-  
-          *.chameleons-visible {
-              overflow: visible !important;
-              
-          }
-  
-          @media screen and (-webkit-min-device-pixel-ratio:0) {
-              *[chameleons] {
-                  clip: auto;
-                  -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 100%)
-              }
-              
-          }
-      `;
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            
+        }
+
+        *[chameleons-tag] {
+            width: 100%;
+            position: relative;
+            padding: 0;
+            
+        }
+
+        *[chameleons-tag]:first-child {
+            max-heigth: 0;
+            overflow: hidden;
+            
+        }
+
+        *[chameleons] {
+            min-height: 100%;
+            width: 100%;
+            position: relative;
+            box-sizing: border-box;
+            top: 0;
+            bottom: 0;
+            z-index: 0;
+            clip: rect(1px, auto, auto, 1px);
+            /* IE8+ & other browsers */
+            
+        }
+
+        *[chameleons]>* {
+            width: 100%;
+            z-index: 0;
+            position: relative;
+            
+        }
+
+        *[chameleons]>*:first-child {
+            width: 100%;
+            z-index: 10000;
+            position: fixed;
+            
+        }
+
+        *[chameleons-tag]> :not(*[chameleons], #menubg, #menu, .non-index) {
+            position: relative;
+            z-index: 0;
+            
+        }
+
+        .chameleons-hidden {
+            overflow: hidden;
+            
+        }
+
+        *.chameleons-visible {
+            overflow: visible !important;
+            
+        }
+
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            *[chameleons] {
+                clip: auto;
+                -webkit-mask-image: -webkit-linear-gradient(top, #ffffff 0%, #ffffff 100%)
+            }
+            
+        }
+    `;
 
   stylesElement.styleSheet
     ? (stylesElement.styleSheet.ChamaleonsStylesText = stylesPureCSS)

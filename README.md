@@ -1,4 +1,4 @@
-# Chameleons for Vue.JS
+# Chameleons for Vue.JS (BETA)
 
 Create a beautiful cut effect to your fixed element and change its color with cut effect when scrolling. Zero dependecy.
 
